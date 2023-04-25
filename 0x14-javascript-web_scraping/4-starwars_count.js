@@ -7,15 +7,16 @@ request(url, function (error, response, body) {
     console.log(error);
   } else {
     const results = JSON.parse(body).results;
-    const count = 0;
+    let count = 0;
     for (const i in results) {
       for (const chars of results[i].characters) {
         if (chars.search('/18/') > 0) {
-                        count += 1;
+		count += 1;
         }
       }
     }
     console.log(count);
   }
 });
+
 
