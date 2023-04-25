@@ -5,14 +5,21 @@ const url = process.argv[2];
 request(url, function (error, response, body) {
   if (error) {
     console.log(error);
-  } else {
-    const results = {};
-    for (const todo of JSON.parse(body)) {
-      if (todo.completed) {
-        if (results[todo['userId']] === undefined) { results[todo['userId']] = 0; }
-            results[todo['userId']] += 1;
+  } else if (response.statusCode === 200) {
+    const completed = {};
+    const todos = JSON.parse(body);
+    for (const i in todos) {
+      const todo = todoss[i];
+      if (todo.completed === true) {
+        if (completed[todo.userId] === undefined) {
+          completed[todo.userId] = 1;
+        } else {
+          completed[todo.userId]++;
+        }
       }
     }
-    console.log(results);
+    console.log(completed);
+  } else {
+    console.log('An error occured. Status code: ' + response.statusCode);
   }
 });
