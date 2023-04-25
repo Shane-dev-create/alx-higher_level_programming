@@ -8,8 +8,8 @@ request(url, function (error, response, body) {
   } else {
     let results = JSON.parse(body).results;
     let count = 0;
-    for (const i in results) {
-      for (const chars of results[i].characters) {
+    for (let i in results) {
+      for (let chars of results[i].characters) {
         if (chars.search('/18/') > 0) { count += 1; }
       }
     }
