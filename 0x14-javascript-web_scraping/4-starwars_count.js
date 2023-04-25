@@ -10,9 +10,7 @@ request(url, function (error, response, body) {
     let count = 0;
     for (const i in results) {
       for (const chars of results[i].characters) {
-        if (chars.search('/18/') > 0) {
-		count += 1;
-        }
+        if (chars.search('/18/') > 0) { count += 1; }
       }
     }
     console.log(count);
