@@ -6,7 +6,7 @@ request(url, function (error, response, body) {
   if (error) {
     console.log(error);
   } else {
-    const results = JSON.parse(body).results;
+    let results = JSON.parse(body).results;
     let count = 0;
     for (const i in results) {
       for (const chars of results[i].characters) {
